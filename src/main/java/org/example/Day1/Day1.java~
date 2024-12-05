@@ -10,29 +10,29 @@ import java.util.logging.Logger;
 public class Day1 {
     private static final Logger logger = Logger.getLogger(Day1.class.getName());
 
-    private final List<Integer> firstRowAsList = new ArrayList<>();
-    private final List<Integer> secondRowAsList = new ArrayList<>();
+    private final List<Integer> row1 = new ArrayList<>();
+    private final List<Integer> row2 = new ArrayList<>();
 
     public Day1() {
-        splitInputIntoRows();
+        splitInputIntoRow();
     }
 
-    private void splitInputIntoRows() {
+    private void splitInputIntoRow() {
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/org/example/Day1/input.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] numbers = line.trim().split("\\s+");
                 if (numbers.length == 2) {
-                    firstRowAsList.add(Integer.parseInt(numbers[0]));
-                    secondRowAsList.add(Integer.parseInt(numbers[1]));
+                    row1.add(Integer.parseInt(numbers[0]));
+                    row2.add(Integer.parseInt(numbers[1]));
                 }
             }
         } catch (IOException e) {
            logger.severe("Error reading file: " + e.getMessage());
            throw new RuntimeException(e);
         }
-        logger.info(firstRowAsList.toString());
-        logger.info(secondRowAsList.toString());
+        logger.info(row1.toString());
+        logger.info(row2.toString());
     }
 
     private int calculateBothSums(int x, int y) {
@@ -65,7 +65,7 @@ public class Day1 {
 
     public static void main(String[] args) {
         Day1 day1 = new Day1();
-        List<Integer> listOfResults = day1.listOfResults(day1.firstRowAsList, day1.secondRowAsList);
+        List<Integer> listOfResults = day1.listOfResults(day1.row1, day1.row2);
         int result = day1.sumList(listOfResults);
         logger.info(String.valueOf(result));
     }
