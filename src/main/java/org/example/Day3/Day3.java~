@@ -51,10 +51,10 @@ public class Day3 {
         return list.stream().mapToInt(Integer::intValue).sum();
     }
 
-    private static void calculateAndLogTotal(Map<String, List<List<Integer>>> functionMap) {
+    private static void processFunctionMap(Map<String, List<List<Integer>>> functionMap) {
         List<Integer> listOfSums = calculateSums(functionMap);
-        int totalSum = sumList(listOfSums);
-        logger.info("Total sum: " + totalSum);
+        int summedList = sumList(listOfSums);
+        logger.info("Total sum: " + summedList);
     }
 
     private static List<Integer> calculateSums(Map<String, List<List<Integer>>> functionMap) {
@@ -74,6 +74,6 @@ public class Day3 {
         String filePath = "src/main/java/org/example/Day3/input.txt";
         String fileContent = readFile(filePath);
         Map<String, List<List<Integer>>> functionMap = extractFunctions(fileContent);
-        calculateAndLogTotal(functionMap);
+        processFunctionMap(functionMap);
     }
 }
