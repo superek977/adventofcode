@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.example.util.utilily.sumList;
+
 public class Day3Part2 {
     private static final Logger logger = Logger.getLogger(Day3.class.getName());
 
@@ -47,9 +49,6 @@ public class Day3Part2 {
         return functionMap;
     }
 
-    public static int sumList(List<Integer> list) {
-        return list.stream().mapToInt(Integer::intValue).sum();
-    }
 
     private static void calculateAndLogTotal(Map<String, List<List<Integer>>> functionMap) {
         List<Integer> listOfSums = calculateSums(functionMap);
