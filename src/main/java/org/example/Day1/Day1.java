@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import static org.example.util.utilily.sumList;
 
 public class Day1 {
     private static final Logger logger = Logger.getLogger(Day1.class.getName());
@@ -59,14 +60,10 @@ public class Day1 {
         return newList;
     }
 
-    public int sumList(List<Integer> list) {
-        return list.stream().mapToInt(Integer::intValue).sum();
-    }
-
     public static void main(String[] args) {
         Day1 day1 = new Day1();
         List<Integer> listOfResults = day1.listOfResults(day1.firstRowAsList, day1.secondRowAsList);
-        int result = day1.sumList(listOfResults);
+        int result = sumList(listOfResults);
         logger.info(String.valueOf(result));
     }
 }

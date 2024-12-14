@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class Day3Part2 {
     private static final Logger logger = Logger.getLogger(Day3Part2.class.getName());
 

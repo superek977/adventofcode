@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static org.example.util.utilily.sumList;
+
 public class Day1Part2 {
     private static final Logger logger = Logger.getLogger(Day1Part2.class.getName());
 
@@ -45,10 +47,6 @@ public class Day1Part2 {
         return count;
     }
 
-    public int sumList(List<Integer> list) {
-        return list.stream().mapToInt(Integer::intValue).sum();
-    }
-
     public static void main(String[] args) {
         Day1Part2 day1 = new Day1Part2();
         List<Integer> listOfResults = new ArrayList<>();
@@ -57,7 +55,7 @@ public class Day1Part2 {
             int result = number * numberOfTimes;
             listOfResults.add(result);
         }
-        int result = day1.sumList(listOfResults);
+        int result = sumList(listOfResults);
         logger.info(String.valueOf(result));
     }
 }

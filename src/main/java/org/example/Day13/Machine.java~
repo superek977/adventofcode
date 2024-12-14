@@ -1,0 +1,76 @@
+package org.example.Day13;
+
+public class Machine {
+    Button buttonA;
+    Button buttonB;
+    Prize prize;
+
+    public Machine(Button buttonA, Button buttonB, Prize prize) {
+        this.buttonA = buttonA;
+        this.buttonB = buttonB;
+        this.prize = prize;
+    }
+
+    public int cheapestY() {
+        if (prize == null || buttonA == null || buttonB == null) {
+            throw new IllegalStateException("Buttons or prize cannot be null");
+        }
+
+        int targetX = prize.x;
+        int targetY = prize.y;
+        int x1 = buttonA.x(), y1 = buttonA.y(), cost1 = buttonA.cost();
+        int x2 = buttonB.x(), y2 = buttonB.y(), cost2 = buttonB.cost();
+
+        if (x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0) {
+            throw new IllegalArgumentException("Button coordinates cannot be zero");
+        }
+
+        int maxB = Math.min(targetX / x2, targetY / y2);
+        int minCost = Integer.MAX_VALUE;
+        int bestA = -1, bestB = -1;
+
+        for (int b = 0; b <= maxB; b++) {
+            int remainingX = targetX - b * x2;
+            int remainingY = targetY - b * y2;
+
+            if (remainingX < 0 || remainingY < 0) {
+                break;
+            }
+
+            if (isValidRemainder(remainingX, remainingY, x1, y1)) {
+                int a = remainingX / x1;
+
+                int currentCost = calculateTotalCost(a, b, cost1, cost2);
+                if (currentCost < minCost) {
+                    minCost = currentCost;
+                    bestA = a;
+                    bestB = b;
+                }
+            }
+        }
+
+        return handleSolutionResult(minCost, bestA, bestB);
+    }
+
+    private boolean isValidRemainder(int remainingX, int remainingY, int x1, int y1) {
+        return remainingX % x1 == 0 &&
+                remainingY % y1 == 0 &&
+                remainingX / x1 * y1 == remainingY;
+    }
+
+    private int calculateTotalCost(int a, int b, int cost1, int cost2) {
+        return a * cost1 + b * cost2;
+    }
+
+    private int handleSolutionResult(int minCost, int bestA, int bestB) {
+        if (minCost == Integer.MAX_VALUE) {
+            // Log with a more informative message
+            System.out.println("No valid solution found for the given target coordinates.");
+            return 0;
+        }
+
+        System.out.printf("Best solution: %d presses of first button, %d presses of second button%n", bestA, bestB);
+
+        return minCost;
+    }
+}
