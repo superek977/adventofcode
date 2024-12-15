@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import static org.example.Day13.MachineFactory.parseMachinesFromFile;
-import static org.example.util.utilily.sumList;
+import static org.example.util.Utility.sumList;
 
 public class Day13 {
     private static final Logger logger = Logger.getLogger(Day13.class.getName());

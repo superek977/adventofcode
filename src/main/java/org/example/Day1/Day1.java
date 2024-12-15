@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import static org.example.util.utilily.sumList;
+import static org.example.util.Utility.sumList;
 
 public class Day1 {
     private static final Logger logger = Logger.getLogger(Day1.class.getName());
