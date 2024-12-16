@@ -1,11 +1,9 @@
 package org.example.template;
 
-import org.example.Day1.Day1;
-
-import java.util.logging.Logger;
+import org.example.util.Logger;
 
 public class Template {
-    private static final Logger logger = Logger.getLogger(Day1.class.getName());
+    private static final org.example.util.Logger logger = new Logger();
 
     public static void main(String[] args) {
     }
