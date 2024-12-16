@@ -55,11 +55,11 @@ public class Day5 {
 
             if (order.contains(a) && order.contains(b)) {
                 if (order.indexOf(a) >= order.indexOf(b)) {
-                    return false;
+                    return true;
                 }
             }
         }
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {
@@ -67,7 +67,7 @@ public class Day5 {
 
         List<List<Integer>> validOrders = new ArrayList<>();
         for(List<Integer> order : orders) {
-            if(isValidOrder(order)) {
+            if(!isValidOrder(order)) {
                 validOrders.add(order);
             }
         }
