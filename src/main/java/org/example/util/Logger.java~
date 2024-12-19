@@ -7,7 +7,10 @@ import java.util.Date;
 
 public class Logger {
     public static final String RED = "\u001B[31m";
-    public static final String YELLOW = "\u001B[33m";// Yellow color
+    public static final String YELLOW = "\u001B[33m";
+    public void info(Object message) {
+        System.out.println("INFO: " +LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + " " + message.toString());
+    }
     public void info(Object message) {
         System.out.println("INFO: " +LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + " " + message.toString());
     }
